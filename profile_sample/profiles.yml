@@ -1,0 +1,39 @@
+dbt_core_demo: #this needs to match the profile in your dbt_project.yml file
+  target: test
+  
+  
+  outputs:
+    test:
+      type: bigquery  #database
+      method: service-account  #authentication method
+      keyfile: C:\Users\progoti\.dbt\dbt-project-bigquery_service_account.json        
+      project: dbt-project-396104                     #project id
+      dataset: Testing             #Replace this with dbt_your_name,  e.g. dbt_bilbo
+      threads: 1
+      job_execution_timeout_seconds: 300
+      location: US
+      priority: interactive
+  
+  
+    dev:
+      type: bigquery  #database
+      method: service-account  #authentication method
+      keyfile: C:\Users\progoti\.dbt\dbt-project-bigquery_service_account.json
+      project: dbt-project-396104
+      dataset: Staging
+      threads: 1
+      job_execution_timeout_seconds: 300
+      location: US
+      priority: interactive
+       
+      
+    prod:
+      type: bigquery  #database
+      method: service-account  #authentication method
+      keyfile: C:\Users\progoti\.dbt\dbt-project-bigquery_service_account.json
+      project: dbt-project-396104
+      dataset: Source
+      threads: 1
+      job_execution_timeout_seconds: 300
+      location: US
+      priority: interactive
